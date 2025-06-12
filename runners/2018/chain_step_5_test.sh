@@ -21,7 +21,21 @@ if [ "${CMSSW_RELEASE}" != "local" ]; then
     fi
 
     cd ${CMSSW_RELEASE}/src
+
     eval `scramv1 runtime -sh`
+    # patching GenWeightTable to retrieve correctly the reweighting weights 
+    git-cms-addpkg PhysicsTools/NanoAOD
+    # sed -i '578s|std::regex weightgroupRwgt("<weightgroup\\\\s\\+(?:name|type)=\\\"(.*)\\\"\\\\s\\*>");|std::regex weightgroupRwgt("<weightgroup\\\\s\\+(?:name)=\\\"(.*)\\\"\\\\s\\+(?:weight_name_strategy)=\\\"(.*)\\\"\\\\s\\*>");|' PhysicsTools/NanoAOD/plugins/GenWeightsTableProducer.cc
+
+    awk 'NR == 578 {
+    print "      std::regex weightgroupRwgt(\"<weightgroup\\\\s+(?:name)=\\\"(.*)\\\"\\\\s+(?:weight_name_strategy)=\\\"(.*)\\\"\\\\s*>\");"
+    next
+    }
+    { print }
+    ' PhysicsTools/NanoAOD/plugins/GenWeightsTableProducer.cc > tmp && mv tmp PhysicsTools/NanoAOD/plugins/GenWeightsTableProducer.cc
+    
+    eval `scramv1 runtime -sh`
+    scramv1 b -j 8
     cd -
 
 fi
