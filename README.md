@@ -54,3 +54,18 @@ crab submit crab_sub_2018.py
 ```
 
 Or equivalently ```crab submit crab_sub_2017.py``` 
+
+With the current setup, I am writing to Bari T2:
+`gfal-ls davs://webdav.recas.ba.infn.it:8443/cms/store/user/mpresill/osWW_EFT/OSWWemu_EWK_dim6_topU3l/OSWWemu_EWK_dim6_topU3l/250715_154441/0000`
+
+## How to test these crab jobs locally:
+
+Run the following commands using the task id (here example from Andrea):
+```
+crab preparelocal --task=250605_125525:apiccine_crab_TTTo2L2Nu_UL2017 --destdir=./local
+```
+
+then `cd`in the folder prepared by crad, and exectue:
+```
+bash -x ./run_job.sh  1
+```

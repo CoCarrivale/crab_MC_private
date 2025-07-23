@@ -12,7 +12,7 @@ pwd
 
 
 
-python3 copy_gridpack.py -i ${GRIDPACK} --use-xrootd
+python3 copy_gridpack.py -i ${GRIDPACK} -u -x root://eosuser.cern.ch/ #--use-xrootd
 
 bash chain_step_0_test.sh ${SEED} ${GRIDPACK} ${EVENTS} ${THREADS}
 bash chain_step_1_test.sh ${SEED}

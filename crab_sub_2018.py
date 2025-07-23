@@ -4,19 +4,9 @@ from multiprocessing import Process
 config = Configuration()
 
 
-# mll_bin = 'zee_dim6_mll50-100' 
-# mll_bin = 'zee_dim6_mll100-200'
-# mll_bin = 'zee_dim6_mll1000-1500' 
-# mll_bin = 'zee_dim6_mll1500-inf'
-# mll_bin = 'zee_dim6_mll200-400'
-# mll_bin = 'zee_dim6_mll400-600' 
-# mll_bin = 'zee_dim6_mll600-800' 
-mll_bin = 'zee_dim6_mll800-1000'
-
-# gp_path = '/eos/user/g/gboldrin/Zee_dim6_LHE/mll_binned/gridpacks_v2_2025_02_07/' + mll_bin + '_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz' 
-gp_path = '/eos/user/g/gboldrin/Zee_dim6_LHE/mll_binned/gridpacks_v3_2025_06_24/' + mll_bin + '_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'
+gp_path = '/eos/user/m/mpresill/www/OSWWemu_EWK_dim6_topU3l_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'  ##to check 
 events_per_job = 1000
-PROD='ZDYEFT-nanoaod18_'+mll_bin
+PROD='OSWWemu_EWK_dim6_topU3l_2018'
 
 config.section_('General')
 config.General.workArea=PROD
@@ -54,21 +44,22 @@ config.JobType.numCores = 4
 
 config.section_('Data')
 config.Data.unitsPerJob = events_per_job
-NJOBS = 2000
+#NJOBS = 100
+NJOBS = 5000
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
 config.Data.splitting = 'EventBased'
 config.Data.publication = False
 #config.Data.ignoreLocality = True
 config.Data.outputPrimaryDataset = PROD
 config.Data.outputDatasetTag = PROD
-config.Data.outLFNDirBase = '/store/user/gboldrin/3DY_SMEFTsim_LO/'
+config.Data.outLFNDirBase = '/store/user/mpresill/osWW_EFT/'
 #config.Data.inputDBS = 'phys03'
 
 config.section_('User')
 
 config.section_('Site')
-#config.Site.whitelist = ['T2_CH_CERN']
-config.Site.storageSite = 'T2_FR_GRIF_LLR'
+#config.Site.whitelist = ['T2_IT_Bari']
+config.Site.storageSite = 'T2_IT_Bari'
 
 
 config.JobType.scriptArgs = ['inputGridpack='+gp_path]
