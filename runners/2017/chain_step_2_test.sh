@@ -26,6 +26,9 @@ if [ "${CMSSW_RELEASE}" != "local" ]; then
 
 fi
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SMP-RunIISummer20UL17HLT-00029_1_cfg.py ${RUN_DIR}/step_2_cfg.py --events=20 --randomSeeds=${SEED}
+#python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/HIG-RunIISummer20UL17HLT-00281_1_cfg.py ${RUN_DIR}/step_2_cfg.py #--randomSeeds=${SEED}
+
+mv ${RUN_DIR}/HIG-RunIISummer20UL17HLT-00281_1_cfg.py ${RUN_DIR}/step_2_cfg.py
 
 cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_2_cfg.py
+echo " STEP 2 COMPLETE! "

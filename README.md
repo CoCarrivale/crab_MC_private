@@ -58,6 +58,9 @@ Or equivalently ```crab submit crab_sub_2017.py```
 With the current setup, I am writing to Bari T2:
 `gfal-ls davs://webdav.recas.ba.infn.it:8443/cms/store/user/mpresill/osWW_EFT/OSWWemu_EWK_dim6_topU3l/OSWWemu_EWK_dim6_topU3l/250715_154441/0000`
 
+The setup of the configs is based on the following VBS request for UL: https://cms-pdmv-prod.web.cern.ch/mcm/requests?dataset_name=WplusTo2JZTo2JJJ_EWK_LO_NPle1_aQGC_TuneCP5_13TeV-madgraph-pythia8&page=-1&shown=2079 
+with minimal modification in order to make it run properly (i.e. fixing the premix libraries using the ones from Costanza).
+
 ## How to test these crab jobs locally:
 
 Run the following commands using the task id (here example from Andrea):

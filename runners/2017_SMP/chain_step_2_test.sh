@@ -1,0 +1,34 @@
+#!/bin/sh
+set -e
+#set -x
+
+SEED=$1
+
+RUN_DIR=${PWD}
+echo ">> Setting RUN_DIR to ${RUN_DIR}"
+
+CMSSW_RELEASE=CMSSW_9_4_14_UL_patch1
+SCRAM_ARCH=slc7_amd64_gcc700
+
+if [ "${CMSSW_RELEASE}" != "local" ]; then
+    if [ -d ${CMSSW_RELEASE} ]; then
+      echo ">> Cleaning up existing ${CMSSW_RELEASE} directory"
+      rm -r ${CMSSW_RELEASE}
+    fi
+    echo ">> Setting up release area for ${CMSSW_RELEASE} and arch ${SCRAM_ARCH}"
+    if [ ! -d ${CMSSW_RELEASE} ]; then
+      scram project CMSSW ${CMSSW_RELEASE}
+    fi
+
+    cd ${CMSSW_RELEASE}/src
+    eval `scramv1 runtime -sh`
+    cd -
+
+fi
+
+#python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/HIG-RunIISummer20UL17HLT-00281_1_cfg.py ${RUN_DIR}/step_2_cfg.py #--randomSeeds=${SEED}
+
+mv ${RUN_DIR}/HLT_step.py ${RUN_DIR}/step_2_cfg.py
+
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_2_cfg.py
+echo " STEP 2 COMPLETE! "
