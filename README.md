@@ -53,7 +53,7 @@ cd CMSSW_10_6_19_patch3/src; cmsenv; cd -
 crab submit crab_sub_2018.py
 ```
 
-Or equivalently ```crab submit crab_sub_2017.py``` 
+Or equivalently ```crab submit crab_sub_2017.py``` or 2016.
 
 With the current setup, I am writing to Bari T2:
 `gfal-ls davs://webdav.recas.ba.infn.it:8443/cms/store/user/mpresill/osWW_EFT/OSWWemu_EWK_dim6_topU3l/OSWWemu_EWK_dim6_topU3l/250715_154441/0000`
@@ -67,8 +67,15 @@ Run the following commands using the task id (here example from Andrea):
 ```
 crab preparelocal --task=250605_125525:apiccine_crab_TTTo2L2Nu_UL2017 --destdir=./local
 ```
-
 then `cd`in the folder prepared by crad, and exectue:
 ```
 bash -x ./run_job.sh  1
 ```
+
+## Known issues
+
+Some premix libraries are being moved from disk to tape to save space and are not accessible anymore. 
+To circumvent this issue, there a couple of workaraounds to list the accessible librieries for the DIGIPremix step.
+Run the `get_dik_files.py` like follows:
+`python get_disk_files.py -u mpresill -dataset /Neutrino_E-10_gun/RunIISummer20ULPrePremix-UL18_106X_upgrade2018_realistic_v11_L1v1-v2/PREMIX/ -o 2018_premix.txt`
+and update the corresponding DIGIpremix configuration accordingly.

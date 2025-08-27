@@ -26,6 +26,6 @@ if [ "${CMSSW_RELEASE}" != "local" ]; then
 
 fi
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SMP-RunIISummer20UL18RECO-00035_1_cfg.py ${RUN_DIR}/step_3_cfg.py --randomSeeds=${SEED}
+python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/RECO_step.py ${RUN_DIR}/step_3_cfg.py --randomSeeds=${SEED}
 
 cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_3_cfg.py

@@ -6,36 +6,37 @@ config = Configuration()
 
 gp_path = '/eos/user/m/mpresill/www/OSWWemu_EWK_dim6_topU3l_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'  ##to check 
 events_per_job = 1000
-PROD='OSWWemu_EWK_dim6_topU3l_2018'
+#events_per_job = 50
+PROD='OSWWemu_EWK_dim6_topU3l_2018_v2'
 
 config.section_('General')
 config.General.workArea=PROD
 config.General.requestName=PROD
 
 config.section_('JobType')
-config.JobType.scriptExe = 'runners/2018/run_chain_test.sh'
+config.JobType.scriptExe = 'runners/2018_SMP/run_chain_test.sh'
 config.JobType.psetName = 'do_nothing_cfg.py'
 config.JobType.pluginName = 'PrivateMC'
-config.JobType.outputFiles = ['SMP-RunIISummer20UL18NanoAODv9-00051.root']
+config.JobType.outputFiles = ['RunIISummer20UL18NanoAODv9.root']
 config.JobType.inputFiles = [
     'CMSSW_10_6_26.tar.gz', # Patched version for nanoAOD with reweighting weights
     'modifyCfg.py',
     'copy_gridpack.py',
     'get_disk_files.py',
-    'runners/2018/run_chain_test.sh',
-    'runners/2018/chain_step_0_test.sh',
-    'runners/2018/chain_step_1_test.sh',
-    'runners/2018/chain_step_2_test.sh',
-    'runners/2018/chain_step_3_test.sh',
-    'runners/2018/chain_step_4_test.sh',
-    'runners/2018/chain_step_5_test.sh',
-    '2018/SMP-RunIISummer20UL18wmLHEGEN-00061_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18SIM-00035_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18DIGIPremix-00035_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18HLT-00035_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18RECO-00035_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18MiniAODv2-00051_1_cfg.py',
-    '2018/SMP-RunIISummer20UL18NanoAODv9-00051_1_cfg.py'
+    'runners/2018_SMP/run_chain_test.sh',
+    'runners/2018_SMP/chain_step_0_test.sh',
+    'runners/2018_SMP/chain_step_1_test.sh',
+    'runners/2018_SMP/chain_step_2_test.sh',
+    'runners/2018_SMP/chain_step_3_test.sh',
+    'runners/2018_SMP/chain_step_4_test.sh',
+    'runners/2018_SMP/chain_step_5_test.sh',
+    '2018_SMP/DIGIpremix_step.py',
+    '2018_SMP/HLT_step.py',
+    '2018_SMP/RECO_step.py',
+    '2018_SMP/SIM_step.py',
+    '2018_SMP/miniAODv2_step.py',
+    '2018_SMP/nanoAODv9_step.py',
+    '2018_SMP/wmLHE_step.py'
     ]
 config.JobType.disableAutomaticOutputCollection = False
 config.JobType.allowUndistributedCMSSW = True
@@ -44,7 +45,7 @@ config.JobType.numCores = 4
 
 config.section_('Data')
 config.Data.unitsPerJob = events_per_job
-#NJOBS = 100
+#NJOBS = 5
 NJOBS = 5000
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
 config.Data.splitting = 'EventBased'
