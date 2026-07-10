@@ -4,7 +4,7 @@ from multiprocessing import Process
 config = Configuration()
 
 
-gp_path = '/eos/user/m/mpresill/www/OSWWemu_EWK_dim6_topU3l_slc7_amd64_gcc700_CMSSW_10_6_19_tarball.tar.xz'  ##to check 
+gp_path = '/eos/user/f/ffiore/VBS/Gridpacks/ZZ/VBS_ZZ_semilep_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz'  ##to check 
 events_per_job = 1000
 #events_per_job = 50
 PROD='OSWWemu_EWK_dim6_topU3l_2018_v2'
@@ -14,7 +14,7 @@ config.General.workArea=PROD
 config.General.requestName=PROD
 
 config.section_('JobType')
-config.JobType.scriptExe = 'runners/2018_SMP/run_chain_test.sh'
+config.JobType.scriptExe = 'runners/2023LHEGS_SMP/run_chain_test.sh'
 config.JobType.psetName = 'do_nothing_cfg.py'
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.outputFiles = ['RunIII_2023LHEGS_NanoAODv9.root']
