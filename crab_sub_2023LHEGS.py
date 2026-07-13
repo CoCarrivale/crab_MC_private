@@ -7,7 +7,7 @@ config = Configuration()
 gp_path = '/eos/user/f/ffiore/VBS/Gridpacks/ZZ/VBS_ZZ_semilep_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz'  ##to check 
 events_per_job = 1000
 #events_per_job = 50
-PROD='OSWWemu_EWK_dim6_topU3l_2018_v2'
+PROD='VBS_semilep_ZZ_EWK_2023LHEGS_v12'
 
 config.section_('General')
 config.General.workArea=PROD
@@ -19,24 +19,24 @@ config.JobType.psetName = 'do_nothing_cfg.py'
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.outputFiles = ['RunIII_2023LHEGS_NanoAODv9.root']
 config.JobType.inputFiles = [
-    'CMSSW_10_6_26.tar.gz', # Patched version for nanoAOD with reweighting weights
+    'CMSSW_13_0_14.tar.gz', # Patched version for nanoAOD with reweighting weights
     'modifyCfg.py',
     'copy_gridpack.py',
     'get_disk_files.py',
     'runners/2023LHEGS_SMP/run_chain_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_0_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_1_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_2_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_3_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_4_test.sh',
-    'runners/2023LHEGS_SMP/chain_step_5_test.sh',
-    '2018_SMP/DIGIpremix_step.py',
-    '2018_SMP/HLT_step.py',
-    '2018_SMP/RECO_step.py',
-    '2018_SMP/SIM_step.py',
-    '2018_SMP/miniAODv2_step.py',
-    '2018_SMP/nanoAODv9_step.py',
-    '2018_SMP/wmLHE_step.py'
+    'runners/2023LHEGS_SMP/chain_step_0_LHEGS.sh',
+    'runners/2023LHEGS_SMP/chain_step_1_DRPreMix.sh',
+#    'runners/2023LHEGS_SMP/chain_step_2_test.sh',
+#    'runners/2023LHEGS_SMP/chain_step_3_test.sh',
+    'runners/2023LHEGS_SMP/chain_step_4_MiniAOD.sh',
+    'runners/2023LHEGS_SMP/chain_step_5_NanoAOD.sh',
+    'Run3/Summer23/cfg_Run3Summer23DRPremix.py',
+#    '2018_SMP/HLT_step.py',
+#    '2018_SMP/RECO_step.py',
+#    '2018_SMP/SIM_step.py',
+    'Run3/Summer23/cfg_Run3Summer23MiniAODv4.py',
+    'Run3/Summer23/cfg_Run3Summer23NanoAODv12.py',
+    'Run3/Summer23/cfg_Run3Summer23wmLHEGS.py'
     ]
 config.JobType.disableAutomaticOutputCollection = False
 config.JobType.allowUndistributedCMSSW = True
