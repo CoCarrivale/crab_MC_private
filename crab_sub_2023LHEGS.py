@@ -5,8 +5,8 @@ config = Configuration()
 
 
 gp_path = '/eos/user/f/ffiore/VBS/Gridpacks/ZZ/VBS_ZZ_semilep_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz'  ##to check 
-events_per_job = 1000
-#events_per_job = 50
+#events_per_job = 1000
+events_per_job = 20
 PROD='VBS_semilep_ZZ_EWK_2023LHEGS_v12'
 
 config.section_('General')
@@ -45,8 +45,8 @@ config.JobType.numCores = 4
 
 config.section_('Data')
 config.Data.unitsPerJob = events_per_job
-#NJOBS = 5
-NJOBS = 5000
+NJOBS = 2
+#NJOBS = 5000
 config.Data.totalUnits = config.Data.unitsPerJob * NJOBS
 config.Data.splitting = 'EventBased'
 config.Data.publication = False
