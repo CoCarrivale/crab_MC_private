@@ -66,6 +66,6 @@ fi
 
 echo ${PWD} 
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/nanoAODv9_step.py ${RUN_DIR}/step_5_cfg.py --randomSeeds=${SEED}
+python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/nanoAODv9_step.py ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23NanoAODv12.py --randomSeeds=${SEED}
 
-cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_5_cfg.py
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23NanoAODv12.py

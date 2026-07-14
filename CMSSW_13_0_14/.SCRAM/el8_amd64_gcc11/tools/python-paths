@@ -1,0 +1,9 @@
+{
+  "RUNTIME": {
+    "PATH:PYTHON3PATH": [
+      "/cvmfs/cms.cern.ch/el8_amd64_gcc11/cms/cmssw-tool-conf/53.1-cd0a40307166ad003a3f2f30e07b8f0c/lib/python3.9/site-packages"
+    ]
+  },
+  "TOOLNAME": "python-paths",
+  "TOOLVERSION": "1.0"
+}

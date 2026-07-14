@@ -27,15 +27,15 @@ if [ "${CMSSW_RELEASE}" != "local" ]; then
 fi
 
 # SIM STEP 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SIM_step.py ${RUN_DIR}/step_1_cfg.py --randomSeeds=${SEED}
+#python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SIM_step.py ${RUN_DIR}/step_1_cfg.py --randomSeeds=${SEED}
 
-cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_1_cfg.py
+#cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_1_cfg.py
 
 # DIGI PREMIX
 # python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SMP-RunIISummer20UL18DIGIPremix-00035_1_cfg.py ${RUN_DIR}/step_1_bis_cfg.py --randomSeeds=${SEED} --checkPremix 2018 --strategy 1
 
 # Do not query for premix files in production mode...Expecting failures
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/DIGIpremix_step.py ${RUN_DIR}/step_1_bis_cfg.py --randomSeeds=${SEED} --strategy 1
+python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/DIGIpremix_step.py ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23DRPremix.py --randomSeeds=${SEED} --strategy 1
 
-cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/step_1_bis_cfg.py
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23DRPremix.py
