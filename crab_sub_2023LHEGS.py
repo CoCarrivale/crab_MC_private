@@ -14,7 +14,7 @@ config.General.workArea=PROD
 config.General.requestName=PROD
 
 config.section_('JobType')
-config.JobType.scriptExe = 'runners/2023LHEGS_SMP/run_chain_test.sh'
+config.JobType.scriptExe = 'runners/2023LHEGS_SMP/run_chain_Run3.sh'
 config.JobType.psetName = 'do_nothing_cfg.py'
 config.JobType.pluginName = 'PrivateMC'
 config.JobType.outputFiles = ['RunIII_2023LHEGS_NanoAODv9.root']
@@ -23,7 +23,7 @@ config.JobType.inputFiles = [
     'modifyCfg.py',
     'copy_gridpack.py',
     'get_disk_files.py',
-    'runners/2023LHEGS_SMP/run_chain_test.sh',
+    'runners/2023LHEGS_SMP/run_chain_Run3.sh',
     'runners/2023LHEGS_SMP/chain_step_0_LHEGS.sh',
     'runners/2023LHEGS_SMP/chain_step_1_DRPreMix.sh',
 #    'runners/2023LHEGS_SMP/chain_step_2_test.sh',
@@ -40,8 +40,8 @@ config.JobType.inputFiles = [
     ]
 config.JobType.disableAutomaticOutputCollection = False
 config.JobType.allowUndistributedCMSSW = True
-config.JobType.maxMemoryMB = 8000
-config.JobType.numCores = 4
+#config.JobType.maxMemoryMB = 8000
+config.JobType.numCores = 1
 
 config.section_('Data')
 config.Data.unitsPerJob = events_per_job
@@ -53,14 +53,14 @@ config.Data.publication = False
 #config.Data.ignoreLocality = True
 config.Data.outputPrimaryDataset = PROD
 config.Data.outputDatasetTag = PROD
-config.Data.outLFNDirBase = '/cms/store/user/ffiore/'
+config.Data.outLFNDirBase = '/store/user/ffiore/'
 #config.Data.inputDBS = 'phys03'
 
 config.section_('User')
 
 config.section_('Site')
 #config.Site.whitelist = ['T2_IT_Bari']
-config.Site.storageSite = 'T2_IT_Bari'
+config.Site.storageSite = 'T2_IT_Legnaro'
 
 
 config.JobType.scriptArgs = ['inputGridpack='+gp_path]

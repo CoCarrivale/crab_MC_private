@@ -22,7 +22,7 @@ echo "------------"
 
 echo ">> Setting RUN_DIR to ${RUN_DIR}"
 
-CMSSW_RELEASE=CMSSW_13_0_17
+CMSSW_RELEASE=CMSSW_13_0_14
 SCRAM_ARCH=el8_amd64_gcc12
 
 if [ "${CMSSW_RELEASE}" != "local" ]; then
@@ -43,9 +43,9 @@ fi
 
 
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/wmLHE_step.py ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23wmLHEGS.py --randomSeeds=${SEED} --strategy=1
+python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23wmLHEGS.py ${RUN_DIR}/out_wmLHE_step.py --randomSeeds=${SEED} --strategy=1
 
 echo "PRINTING PWD chain, where FrameworkJobReport.xml will be"
 pwd
 
-cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/Run3/Summer23/cfg_Run3Summer23wmLHEGS.py jobNum=$1 ${GRIDPACK} ${EVENTS} ${THREADS}
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_wmLHE_step.py jobNum=$1 ${GRIDPACK} ${EVENTS} ${THREADS}
