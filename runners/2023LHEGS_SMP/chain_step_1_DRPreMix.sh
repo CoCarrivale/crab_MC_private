@@ -36,6 +36,6 @@ fi
 
 # Do not query for premix files in production mode...Expecting failures
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23DRPremix.py ${RUN_DIR}/out_DIGIpremix_step.py --randomSeeds=${SEED} --strategy 1
+python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23DRPremix.py ${RUN_DIR}/out_DIGIpremix_step.py --randomSeeds=${SEED} --strategy 1
 
 cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_DIGIpremix_step.py

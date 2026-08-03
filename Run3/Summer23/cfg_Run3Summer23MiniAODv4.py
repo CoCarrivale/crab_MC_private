@@ -29,7 +29,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:EXO-Run3Summer23DRPremix-01974.root'),
+    fileNames = cms.untracked.vstring('file:Run3Summer23DRPremix.root'),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -84,7 +84,7 @@ process.MINIAODSIMoutput = cms.OutputModule("PoolOutputModule",
     dropMetaData = cms.untracked.string('ALL'),
     eventAutoFlushCompressedSize = cms.untracked.int32(-900),
     fastCloning = cms.untracked.bool(False),
-    fileName = cms.untracked.string('file:EXO-Run3Summer23MiniAODv4-01974.root'),
+    fileName = cms.untracked.string('file:Run3Summer23MiniAODv4.root'),
     outputCommands = process.MINIAODSIMEventContent.outputCommands,
     overrideBranchesSplitLevel = cms.untracked.VPSet(
         cms.untracked.PSet(

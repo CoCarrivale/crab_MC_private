@@ -207,3 +207,29 @@ Traceback (most recent call last):
 CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/f/ffiore/work/produzione/crab_MC_private/VBS_semilep_ZZ_EWK_2023LHEGS_v12/crab_VBS_semilep_ZZ_EWK_2023LHEGS_v12' already exists 
 Please change the requestName in the config file
 INFO 2026-07-22 13:46:05.925 UTC: 	 Log file is /afs/cern.ch/user/f/ffiore/work/produzione/crab_MC_private/crab.log
+DEBUG 2026-07-27 14:30:21.359 UTC: 	 CRAB Client version: v3.260630
+DEBUG 2026-07-27 14:30:21.360 UTC: 	 Running on: Linux lxplus811.cern.ch 4.18.0-553.144.1.el8_10.x86_64 #1 SMP Mon Jul 13 11:33:25 EDT 2026 x86_64 x86_64 x86_64 GNU/Linux
+DEBUG 2026-07-27 14:30:21.360 UTC: 	 Not using Singularity
+DEBUG 2026-07-27 14:30:21.360 UTC: 	 Operating System: Red Hat Enterprise Linux 8.10 (Ootpa)
+DEBUG 2026-07-27 14:30:21.360 UTC: 	 Executing command: 'submit'
+DEBUG 2026-07-27 14:30:21.362 UTC: 	 Found CRAB cache file /afs/cern.ch/user/f/ffiore/.crab3
+INFO 2026-07-27 14:30:21.364 UTC: 	 Will use CRAB configuration file crab_sub_2023LHEGS.py
+DEBUG 2026-07-27 14:30:21.364 UTC: 	 Loading CRAB configuration file.
+DEBUG 2026-07-27 14:30:21.373 UTC: 	 Will use CRAB plugin PRIVATEMC (i.e. will run an a MC generation job type).
+ERROR 2026-07-27 14:30:21.378 UTC: 	 Working area '/afs/cern.ch/user/f/ffiore/work/produzione/crab_MC_private/VBS_semilep_ZZ_EWK_2023LHEGS_v12/crab_VBS_semilep_ZZ_EWK_2023LHEGS_v12' already exists 
+Please change the requestName in the config file
+ERROR 2026-07-27 14:30:21.378 UTC: 	 Caught ClientException exception
+Traceback (most recent call last):
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.260630.00/bin/crab.py", line 157, in <module>
+    client()
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.260630.00/bin/crab.py", line 135, in __call__
+    self.cmd = sub_cmd(self.logger, args[1:])  # the crab command to be executed
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.260630.00/lib/CRABClient/Commands/submit.py", line 37, in __init__
+    SubCommand.__init__(self, logger, cmdargs, disable_interspersed_args=True)
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.260630.00/lib/CRABClient/Commands/SubCommand.py", line 328, in __init__
+    self.requestarea, self.requestname, self.logfile = createWorkArea(
+  File "/cvmfs/cms.cern.ch/share/cms/crab-prod/v3.260630.00/lib/CRABClient/ClientUtilities.py", line 392, in createWorkArea
+    raise ConfigException("Working area '%s' already exists \nPlease change the requestName in the config file" % fullpath)
+CRABClient.ClientExceptions.ConfigException: Working area '/afs/cern.ch/user/f/ffiore/work/produzione/crab_MC_private/VBS_semilep_ZZ_EWK_2023LHEGS_v12/crab_VBS_semilep_ZZ_EWK_2023LHEGS_v12' already exists 
+Please change the requestName in the config file
+INFO 2026-07-27 14:30:21.384 UTC: 	 Log file is /afs/cern.ch/user/f/ffiore/work/produzione/crab_MC_private/crab.log

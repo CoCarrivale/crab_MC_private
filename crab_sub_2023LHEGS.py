@@ -17,7 +17,7 @@ config.section_('JobType')
 config.JobType.scriptExe = 'runners/2023LHEGS_SMP/run_chain_Run3.sh'
 config.JobType.psetName = 'do_nothing_cfg.py'
 config.JobType.pluginName = 'PrivateMC'
-config.JobType.outputFiles = ['RunIII_2023LHEGS_NanoAODv9.root']
+config.JobType.outputFiles = ['Run3Summer23NanoAODv12.root']
 config.JobType.inputFiles = [
     'CMSSW_13_0_14.tar.gz', # Patched version for nanoAOD with reweighting weights
     'modifyCfg.py',
@@ -40,8 +40,8 @@ config.JobType.inputFiles = [
     ]
 config.JobType.disableAutomaticOutputCollection = False
 config.JobType.allowUndistributedCMSSW = True
-#config.JobType.maxMemoryMB = 8000
-config.JobType.numCores = 1
+config.JobType.maxMemoryMB = 8000
+config.JobType.numCores = 4
 
 config.section_('Data')
 config.Data.unitsPerJob = events_per_job

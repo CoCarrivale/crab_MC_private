@@ -23,7 +23,7 @@ echo "------------"
 echo ">> Setting RUN_DIR to ${RUN_DIR}"
 
 CMSSW_RELEASE=CMSSW_13_0_14
-SCRAM_ARCH=el8_amd64_gcc12
+SCRAM_ARCH=el8_amd64_gcc10
 
 if [ "${CMSSW_RELEASE}" != "local" ]; then
     if [ -d ${CMSSW_RELEASE} ]; then
@@ -43,7 +43,7 @@ fi
 
 
 
-python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23wmLHEGS.py ${RUN_DIR}/out_wmLHE_step.py --randomSeeds=${SEED} --strategy=1
+python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23wmLHEGS.py ${RUN_DIR}/out_wmLHE_step.py --randomSeeds=${SEED} --strategy=1
 
 echo "PRINTING PWD chain, where FrameworkJobReport.xml will be"
 pwd

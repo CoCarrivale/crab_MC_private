@@ -31,7 +31,7 @@ process.maxEvents = cms.untracked.PSet(
 
 # Input source
 process.source = cms.Source("PoolSource",
-    fileNames = cms.untracked.vstring('file:EXO-Run3Summer23DRPremix-01964_0.root'),
+    fileNames = cms.untracked.vstring('file:Run3Summer23wmLHEGS.root'),
     secondaryFileNames = cms.untracked.vstring()
 )
 
@@ -84,7 +84,7 @@ process.AODSIMoutput = cms.OutputModule("PoolOutputModule",
         filterName = cms.untracked.string('')
     ),
     eventAutoFlushCompressedSize = cms.untracked.int32(31457280),
-    fileName = cms.untracked.string('file:EXO-Run3Summer23DRPremix-01964.root'),
+    fileName = cms.untracked.string('file:Run3Summer23DRPremix.root'),
     outputCommands = process.AODSIMEventContent.outputCommands,
     overrideInputFileSplitLevels = cms.untracked.bool(True)
 )
