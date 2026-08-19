@@ -31,6 +31,7 @@ config.JobType.inputFiles = [
     'runners/2023LHEGS_SMP/chain_step_4_MiniAOD.sh',
     'runners/2023LHEGS_SMP/chain_step_5_NanoAOD.sh',
     'Run3/Summer23/cfg_Run3Summer23DRPremix.py',
+    'Run3/Summer23/cfg_Run3Summer23digiRAW.py',
 #    '2018_SMP/HLT_step.py',
 #    '2018_SMP/RECO_step.py',
 #    '2018_SMP/SIM_step.py',

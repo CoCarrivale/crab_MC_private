@@ -34,8 +34,15 @@ fi
 # DIGI PREMIX
 # python ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/SMP-RunIISummer20UL18DIGIPremix-00035_1_cfg.py ${RUN_DIR}/step_1_bis_cfg.py --randomSeeds=${SEED} --checkPremix 2018 --strategy 1
 
+
+#DigiRAW STEP FIRST!
+python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23digiRAW.py ${RUN_DIR}/out_digiRAW_step.py --randomSeeds=${SEED} --strategy 1
+
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_digiRAW_step.py
+
+
 # Do not query for premix files in production mode...Expecting failures
 
-python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23DRPremix.py ${RUN_DIR}/out_DIGIpremix_step.py --randomSeeds=${SEED} --strategy 1
+python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_Run3Summer23DRPremix.py ${RUN_DIR}/out_DRPremix_step.py --randomSeeds=${SEED} --strategy 1
 
-cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_DIGIpremix_step.py
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_DRPremix_step.py
