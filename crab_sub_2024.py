@@ -7,7 +7,7 @@ config = Configuration()
 gp_path = '/eos/user/f/ffiore/VBS/Gridpacks/ZZ/VBS_ZZ_semilep_el8_amd64_gcc10_CMSSW_12_4_8_tarball.tar.xz'  ##to check 
 #events_per_job = 1000
 events_per_job = 20
-PROD='VBS_semilep_ZZ_EWK_2025_v15'
+PROD='VBS_semilep_ZZ_EWK_2024_v15'
 
 config.section_('General')
 config.General.workArea=PROD
@@ -35,9 +35,9 @@ config.JobType.inputFiles = [
 #    '2018_SMP/HLT_step.py',
 #    '2018_SMP/RECO_step.py',
 #    '2018_SMP/SIM_step.py',
-    'Run3/Summer23/cfg_RunIII2024Summer24MiniAODv6.py',
-    'Run3/Summer23/cfg_RunIII2024Summer24NanoAODv15.py',
-    'Run3/Summer23/cfg_RunIII2024Summer24wmLHEGS.py'
+    'Run3/Summer24_nAODv15/cfg_RunIII2024Summer24MiniAODv6.py',
+    'Run3/Summer24_nAODv15/cfg_RunIII2024Summer24NanoAODv15.py',
+    'Run3/Summer24_nAODv15/cfg_RunIII2024Summer24wmLHEGS.py'
     ]
 config.JobType.disableAutomaticOutputCollection = False
 config.JobType.allowUndistributedCMSSW = True
