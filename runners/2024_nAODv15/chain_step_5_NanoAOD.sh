@@ -1,0 +1,71 @@
+#!/bin/sh
+set -e
+#set -x
+
+SEED=$1
+
+RUN_DIR=${PWD}
+echo ">> Setting RUN_DIR to ${RUN_DIR}"
+
+CMSSW_RELEASE=CMSSW_15_0_2
+SCRAM_ARCH=el8_amd64_gcc12
+
+# Check if a tarred version exists
+if [ -f ${CMSSW_RELEASE}.tar.gz ]; then
+
+  if [ -d ${CMSSW_RELEASE} ]; then
+      echo ">> Cleaning up existing ${CMSSW_RELEASE} directory"
+      rm -r ${CMSSW_RELEASE}
+    fi
+
+    echo ">> Extracting ${CMSSW_RELEASE} from tarball"
+    tar -xzf ${CMSSW_RELEASE}.tar.gz
+    cd ${CMSSW_RELEASE}/src 
+    eval `scramv1 runtime -sh`
+    scramv1 b ProjectRename
+    scramv1 b -j 8
+    if [ -d PhysicsTools ]; then
+        cd PhysicsTools/NanoAOD; 
+        scramv1 b -j 8
+        cd -
+	eval `scramv1 runtime -sh`
+    fi
+    # redundancy does not harm 
+    eval `scramv1 runtime -sh`
+    cd ../..
+
+elif [ "${CMSSW_RELEASE}" != "local" ]; then
+    if [ -d ${CMSSW_RELEASE} ]; then
+      echo ">> Cleaning up existing ${CMSSW_RELEASE} directory"
+      rm -r ${CMSSW_RELEASE}
+    fi
+    echo ">> Setting up release area for ${CMSSW_RELEASE} and arch ${SCRAM_ARCH}"
+    if [ ! -d ${CMSSW_RELEASE} ]; then
+      scram project CMSSW ${CMSSW_RELEASE}
+    fi
+
+    cd ${CMSSW_RELEASE}/src
+
+    eval `scramv1 runtime -sh`
+    # patching GenWeightTable to retrieve correctly the reweighting weights 
+    git-cms-addpkg PhysicsTools/NanoAOD
+
+    awk 'NR == 578 {
+    print "      std::regex weightgroupRwgt(\"<weightgroup\\\\s+(?:name)=\\\"(.*)\\\"\\\\s+(?:weight_name_strategy)=\\\"(.*)\\\"\\\\s*>\");"
+    next
+    }
+    { print }
+    ' PhysicsTools/NanoAOD/plugins/GenWeightsTableProducer.cc > tmp && mv tmp PhysicsTools/NanoAOD/plugins/GenWeightsTableProducer.cc
+    
+    eval `scramv1 runtime -sh`
+    scramv1 b -j 8
+    eval `scramv1 runtime -sh`
+    cd -
+
+fi
+
+echo ${PWD} 
+
+python3 ${RUN_DIR}/modifyCfg.py ${RUN_DIR}/cfg_RunIII2024Summer24NanoAODv15.py ${RUN_DIR}/out_nanoAODv15_step.py --randomSeeds=${SEED}
+
+cmsRun -e -j FrameworkJobReport.xml ${RUN_DIR}/out_nanoAODv15_step.py
